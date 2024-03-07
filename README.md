@@ -1,2 +1,2 @@
-# develhope-esercizi-live
+# develhope esercizi live
 Live coding exercises
