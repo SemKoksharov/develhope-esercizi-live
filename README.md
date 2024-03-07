@@ -8,4 +8,7 @@ Live coding exercises
 
 -Dopo aver finito facciamo PUSH
 
+Per ogni esercizio nuova cartella con nome di Es. & "/src" dentro.
+
 Buon divertimento..!
+
