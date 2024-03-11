@@ -67,4 +67,11 @@ public abstract class Veicolo  {
     public void setVelocita(int velocita) {
         this.velocita = velocita;
     }
+
+    @Override
+    public String toString() {
+        return "Veicolo [marca=" + marca + ", modello=" + modello + ", prezzo=" + prezzo + ", tipoDiMotore="
+                + tipoDiMotore + "]";
+    }
+    
 }

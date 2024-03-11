@@ -4,7 +4,7 @@ public class Moto extends Veicolo {
     Patente patente;
 
     public Moto(String marca, String modello, float prezzo, TipoDiMotore tipoDiMotore,
-                Patente patente) {
+            Patente patente) {
         super(marca, modello, prezzo, tipoDiMotore);
         this.patente = patente;
     }
@@ -33,9 +33,10 @@ public class Moto extends Veicolo {
     @Override
     public void consumoMedio() {
         if (peso <= 0 || velocita <= 0) {
-            System.out.println("ERRORE SEI SCEMO");
+            System.out.println(super.getMarca() + "ERRORE SEI SCEMO");
         } else {
-            System.out.println("Studi scientifici dimostrano che il consumo per km è:" + peso * velocita/2);
+            System.out.println(
+                    super.getMarca() + "Studi scientifici dimostrano che il consumo per km è:" + peso * velocita / 2);
         }
     }
 }
