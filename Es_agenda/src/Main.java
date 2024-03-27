@@ -9,7 +9,5 @@ public class Main {
         agenda.aggiungiEvento(evento2);
         System.out.println();
 
-
-
     }
 }
