@@ -3,6 +3,7 @@ import java.util.Date;
 public class Evento {
     private String nome;
     private Date data;
+
     private Double latitudine;
     private Double longitudine;
     private String descrizione;
