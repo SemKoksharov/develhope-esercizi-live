@@ -93,5 +93,10 @@ public class Rubrica implements IRubrica {
 
     }
 
+    @Override
+    public int size() {
+        return rubrica.size();
+    }
+
 
 }

@@ -42,6 +42,11 @@ public class Contatto {
     public void setPrefisso(String prefisso) {
         this.prefisso = prefisso;
     }
+    public boolean verifyPrefisso(String prefisso){
+        if(prefisso.length() != 3){
+            return false;
+        }return true;
+    }
 
     @Override
     public String toString() {

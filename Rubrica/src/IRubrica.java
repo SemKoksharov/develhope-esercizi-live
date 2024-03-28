@@ -7,4 +7,5 @@ public interface IRubrica {
     public void visualizzaRubrica();
     public void cercaContatto(String input);
     public void visualizzaSoloContattiEstesi();
+    public int size();
 }

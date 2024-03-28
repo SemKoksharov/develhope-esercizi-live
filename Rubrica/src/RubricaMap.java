@@ -43,4 +43,9 @@ public class RubricaMap implements IRubrica{
     public void visualizzaSoloContattiEstesi() {
 
     }
+
+    @Override
+    public int size() {
+        return rubricaMap.size();
+    }
 }
