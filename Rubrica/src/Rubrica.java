@@ -65,8 +65,12 @@ public class Rubrica implements IRubrica {
 
     @Override
     public void visualizzaRubrica() {
-        for(Contatto contatto : rubrica){
-            System.out.println(contatto);
+        if (!rubrica.isEmpty()) {
+            for (Contatto contatto : rubrica) {
+                System.out.println(contatto);
+            }
+        } else {
+            System.out.println("La rubrica è vuota");
         }
     }
 
@@ -88,4 +92,6 @@ public class Rubrica implements IRubrica {
     public void visualizzaSoloContattiEstesi() {
 
     }
+
+
 }
