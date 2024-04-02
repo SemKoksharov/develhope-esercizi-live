@@ -1,17 +1,22 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class RubricaMap implements IRubrica{
+public class RubricaMap implements IRubrica {
     Map<String, Contatto> rubricaMap = new HashMap<>();
 
     @Override
-    public void aggiungiContatto(Contatto contatto) throws Exception {
-        rubricaMap.put(contatto.getNumero(),contatto);
+    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso) throws Exception {
+
     }
 
     @Override
-    public void rimuoviContatto(Contatto contatto) {
-        rubricaMap.remove(contatto.getNumero());
+    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso, String via, String citta, String cap, String provincia) throws Exception {
+
+    }
+
+    @Override
+    public void rimuoviContatto(String idContatto) {
+
     }
 
     @Override
@@ -46,6 +51,6 @@ public class RubricaMap implements IRubrica{
 
     @Override
     public int size() {
-        return rubricaMap.size();
+        return 0;
     }
 }

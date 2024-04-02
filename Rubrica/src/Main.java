@@ -31,6 +31,13 @@ public class Main {
 //        rubrica.visualizzaRubrica();
 
         IRubrica iRubrica = new Rubrica();
+
+        iRubrica.aggiungiContatto("Davide", "Busà", "11111", "+39");
+        iRubrica.aggiungiContatto("Francesco", "Checchia", "22222", "+39");
+        iRubrica.aggiungiContatto("Emmanuele", "Sartorio", "33333", "+39");
+        iRubrica.aggiungiContatto("Marco", "Ferraro", "44444",
+                "+39", "via delle vie" ,"Montalto Uffugo", "87046", "Cosenza");
+        
         Menu menu = new Menu(iRubrica);
         menu.menu();
     }

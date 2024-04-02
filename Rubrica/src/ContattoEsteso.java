@@ -3,8 +3,8 @@ public class ContattoEsteso extends Contatto{
     private String citta;
     private String cap;
     private String provincia;
-    public ContattoEsteso(String nome, String cognome, String numero, String prefisso, String via, String citta, String cap, String provincia) {
-        super(nome, cognome, numero, prefisso);
+    public ContattoEsteso(String id, String nome, String cognome, String numero, String prefisso, String via, String citta, String cap, String provincia) {
+        super(id, nome, cognome, numero, prefisso);
         this.via = via;
         this.citta = citta;
         this.cap = cap;
@@ -45,7 +45,8 @@ public class ContattoEsteso extends Contatto{
     @Override
     public String toString() {
         return
-                "nome= " + super.getNome()  +
+                "id = " + super.getId() +
+                        ", nome= " + super.getNome()  +
                         ", cognome= " + super.getCognome()  +
                         ", numero telefonico = " + super.getPrefisso() + " " + super.getNumero() +
                         ", indirizzo = " + via + ", " + citta + ", " + provincia + ", " + cap

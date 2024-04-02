@@ -3,8 +3,10 @@ public class Contatto {
     private String cognome;
     private String numero;
     private String prefisso;
+    private String id;
 
-    public Contatto(String nome, String cognome, String numero, String prefisso) {
+    public Contatto(String id, String nome, String cognome, String numero, String prefisso) {
+        this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.numero = numero;
@@ -39,6 +41,10 @@ public class Contatto {
         return prefisso;
     }
 
+    public String getId(){
+        return id;
+    }
+
     public void setPrefisso(String prefisso) {
         this.prefisso = prefisso;
     }
@@ -51,7 +57,8 @@ public class Contatto {
     @Override
     public String toString() {
         return
-                "nome = " + nome  +
+                "id = " + id +
+                ", nome = " + nome  +
                 ", cognome = " + cognome  +
                 ", numero telefonico = " + prefisso + " " + numero
 

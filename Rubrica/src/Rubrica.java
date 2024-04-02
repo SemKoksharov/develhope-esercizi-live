@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Rubrica implements IRubrica {
     List<Contatto> rubrica = null;
+    private int numeroContatto = 0;
     private int numeroMassimo;
 
     public Rubrica() {
@@ -17,9 +18,26 @@ public class Rubrica implements IRubrica {
             throw new Exception("La rubrica non può essere inferiore di 1");
         }
     }
-
     @Override
-    public void aggiungiContatto(Contatto contatto) throws Exception {
+    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso) throws Exception {
+        numeroContatto++;
+        String id = numeroContatto + "";
+        Contatto contatto = new Contatto(id, nome, cognome, numero, prefisso);
+        if(numeroMassimo != 0) {
+            if (rubrica.size() < numeroMassimo) {
+                rubrica.add(contatto);
+            } else {
+                throw new Exception("Non puoi aggiungere più contatti");
+            }
+        }else{
+            rubrica.add(contatto);
+        }
+    }
+
+    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso,String via, String citta, String cap, String provincia) throws Exception {
+        numeroContatto++;
+        String id = numeroContatto + "";
+        ContattoEsteso contatto = new ContattoEsteso(id, nome, cognome, numero, prefisso, via, citta, cap, provincia);
         if(numeroMassimo != 0) {
             if (rubrica.size() < numeroMassimo) {
                 rubrica.add(contatto);
@@ -32,8 +50,15 @@ public class Rubrica implements IRubrica {
     }
 
     @Override
-    public void rimuoviContatto(Contatto contatto) {
-        rubrica.remove(contatto);
+    public void rimuoviContatto(String idContatto) {
+        for(Contatto contatto : rubrica) {
+            if(contatto.getId().equalsIgnoreCase(idContatto)) {
+                rubrica.remove(contatto);
+                System.out.println("Contatto eliminato!");
+                return;
+            }
+        }
+        System.out.println("Contatto non trovato!");
     }
 
     @Override
@@ -90,7 +115,15 @@ public class Rubrica implements IRubrica {
 
     @Override
     public void visualizzaSoloContattiEstesi() {
-
+        if (!rubrica.isEmpty()) {
+            for (Contatto contatto : rubrica) {
+                if(contatto instanceof ContattoEsteso) {
+                    System.out.println(contatto);
+                }
+            }
+        } else {
+            System.out.println("La rubrica è vuota");
+        }
     }
 
     @Override

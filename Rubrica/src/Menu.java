@@ -17,6 +17,7 @@ public class Menu {
             System.out.println("Digita 3 per cancellare un contatto");
             System.out.println("Digita 4 per cercare un contatto per nome");
             System.out.println("Digita 5 per cercare un contatto per numero di telefono");
+            System.out.println("Digita 6 per visualizzare i contatti che hanno anche un indirizzo");
             System.out.println("Digita 0 per uscire");
             int scelta = scanner.nextInt();
             switch (scelta){
@@ -26,11 +27,19 @@ public class Menu {
                     break;
                 case 2:
                     try {
-                        iRubrica.aggiungiContatto(aggCont());
+                        aggCont();
                         System.out.println("Contatto aggiunto correttamente");
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
+                    break;
+                case 3:
+                    System.out.print("Inserisci l'id del contatto da eliminare: ");
+                    String id = scanner.next();
+                    iRubrica.rimuoviContatto(id);
+                    break;
+                case 6:
+                    iRubrica.visualizzaSoloContattiEstesi();
                     break;
                 case 0:
                     System.out.println("Grazie e tanti saluti");
@@ -39,7 +48,7 @@ public class Menu {
         }
     }
 
-    public Contatto aggCont (){
+    public void aggCont () throws Exception {
         System.out.println("Digita il nome");
         String nome = scanner.next();
         System.out.println("Digita il cognome");
@@ -49,11 +58,12 @@ public class Menu {
         System.out.println("Digita il numero di telefono");
         String numero = scanner.next();
         System.out.println("Vuoi inserire anche l'indirizzo? Se si digita si, altrimenti no");
-        while (true) {
+        boolean var = true;
+        while (var) {
             String scelta = scanner.next();
             if (scelta.equalsIgnoreCase("no")) {
-                Contatto contatto = new Contatto(nome, cognome, numero, prefisso);
-                return contatto;
+                iRubrica.aggiungiContatto(nome, cognome, numero, prefisso);
+                var = false;
             } else if (scelta.equalsIgnoreCase("si")){
                 System.out.println("Inserisci l'indirizzo completo");
                 System.out.println("Inserisci la via");
@@ -64,8 +74,8 @@ public class Menu {
                 String cap = scanner.next();
                 System.out.println("Inserisci la provincia");
                 String provincia = scanner.next();
-                Contatto contattoEsteso = new ContattoEsteso(nome, cognome, numero, prefisso, via, citta, cap, provincia);
-                return contattoEsteso;
+                iRubrica.aggiungiContatto(nome, cognome, numero, prefisso, via, citta, cap, provincia);
+                var = false;
             } else {
                 System.out.println("Digita correttamente o SI o NO!!!!!!!!!! (Sei un cretino)");
             }
