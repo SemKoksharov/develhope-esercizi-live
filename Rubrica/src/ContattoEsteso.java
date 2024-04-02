@@ -1,10 +1,13 @@
+import java.util.List;
+
 public class ContattoEsteso extends Contatto{
     private String via;
     private String citta;
     private String cap;
     private String provincia;
-    public ContattoEsteso(String id, String nome, String cognome, String numero, String prefisso, String via, String citta, String cap, String provincia) {
-        super(id, nome, cognome, numero, prefisso);
+
+    public ContattoEsteso(String id, String nome, String cognome,List<NumeroT> numeroTList, String via, String citta, String cap, String provincia) {
+        super(id, nome, cognome, numeroTList);
         this.via = via;
         this.citta = citta;
         this.cap = cap;
@@ -48,9 +51,7 @@ public class ContattoEsteso extends Contatto{
                 "id = " + super.getId() +
                         ", nome= " + super.getNome()  +
                         ", cognome= " + super.getCognome()  +
-                        ", numero telefonico = " + super.getPrefisso() + " " + super.getNumero() +
-                        ", indirizzo = " + via + ", " + citta + ", " + provincia + ", " + cap
-
-                ;
+                        ", indirizzo = " + via + ", " + citta + ", " + provincia + ", " + cap + "\n" +
+                        stampaNum();
     }
 }

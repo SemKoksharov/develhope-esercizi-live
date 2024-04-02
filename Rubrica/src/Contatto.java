@@ -1,16 +1,21 @@
+import java.util.List;
+
 public class Contatto {
     private String nome;
     private String cognome;
-    private String numero;
-    private String prefisso;
     private String id;
+    private List<NumeroT> numeroTList;
 
-    public Contatto(String id, String nome, String cognome, String numero, String prefisso) {
+    public Contatto(String id, String nome, String cognome, List<NumeroT> numeroTList) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
-        this.numero = numero;
-        this.prefisso = prefisso;
+        this.numeroTList = numeroTList;
+
+    }
+
+    public List<NumeroT> getNumeroTList() {
+        return numeroTList;
     }
 
     public String getNome() {
@@ -29,29 +34,30 @@ public class Contatto {
         this.cognome = cognome;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getPrefisso() {
-        return prefisso;
-    }
 
     public String getId(){
         return id;
     }
 
-    public void setPrefisso(String prefisso) {
-        this.prefisso = prefisso;
-    }
+
     public boolean verifyPrefisso(String prefisso){
         if(prefisso.length() != 3){
             return false;
         }return true;
+    }
+    public String stampaNum(){
+        String numeri = "";
+        for(NumeroT numeroT : numeroTList){
+            numeri = numeri + numeroT.getPrefisso() + " " + numeroT.getNumero() + "\n";
+        }
+        return numeri;
+    }
+
+    public boolean containsNum(String input) {
+        for(NumeroT numeroT : numeroTList) {
+            return numeroT.getNumero().contains(input);
+        }
+        return false;
     }
 
     @Override
@@ -59,9 +65,6 @@ public class Contatto {
         return
                 "id = " + id +
                 ", nome = " + nome  +
-                ", cognome = " + cognome  +
-                ", numero telefonico = " + prefisso + " " + numero
-
-                ;
+                ", cognome = " + cognome + "\n" + stampaNum();
     }
 }

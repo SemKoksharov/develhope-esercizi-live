@@ -1,6 +1,8 @@
+import java.util.List;
+
 public interface IRubrica {
-    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso) throws Exception;
-    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso, String via, String citta, String cap, String provincia) throws Exception;
+    public void aggiungiContatto(String nome, String cognome, List<NumeroT> numeroTList) throws Exception;
+    public void aggiungiContatto(String nome, String cognome, List<NumeroT> numeroTList , String via, String citta, String cap, String provincia) throws Exception;
     public void rimuoviContatto(String idContatto);
     public void cercaContattoPerNome(String nome);
     public void cercaContattoPerCognome(String cognome);

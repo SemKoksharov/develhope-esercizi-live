@@ -19,10 +19,10 @@ public class Rubrica implements IRubrica {
         }
     }
     @Override
-    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso) throws Exception {
+    public void aggiungiContatto(String nome, String cognome,List<NumeroT> numeroTList) throws Exception {
         numeroContatto++;
         String id = numeroContatto + "";
-        Contatto contatto = new Contatto(id, nome, cognome, numero, prefisso);
+        Contatto contatto = new Contatto(id, nome, cognome,numeroTList);
         if(numeroMassimo != 0) {
             if (rubrica.size() < numeroMassimo) {
                 rubrica.add(contatto);
@@ -34,10 +34,10 @@ public class Rubrica implements IRubrica {
         }
     }
 
-    public void aggiungiContatto(String nome, String cognome, String numero, String prefisso,String via, String citta, String cap, String provincia) throws Exception {
+    public void aggiungiContatto(String nome, String cognome, List<NumeroT>numeroTList,String via, String citta, String cap, String provincia) throws Exception {
         numeroContatto++;
         String id = numeroContatto + "";
-        ContattoEsteso contatto = new ContattoEsteso(id, nome, cognome, numero, prefisso, via, citta, cap, provincia);
+        ContattoEsteso contatto = new ContattoEsteso(id, nome, cognome, numeroTList, via, citta, cap, provincia);
         if(numeroMassimo != 0) {
             if (rubrica.size() < numeroMassimo) {
                 rubrica.add(contatto);
@@ -82,9 +82,14 @@ public class Rubrica implements IRubrica {
     @Override
     public void cercaContattoPerNumero(String numero) {
         for(Contatto contatto : rubrica){
-            if(contatto.getNumero().startsWith(numero)){
-                System.out.println(contatto);
+            for(NumeroT numeroT : contatto.getNumeroTList()){
+                if(numeroT.getNumero().startsWith(numero)){
+                    System.out.println(contatto);
+                    break;
+                }
+
             }
+
         }
     }
 
@@ -99,13 +104,15 @@ public class Rubrica implements IRubrica {
         }
     }
 
+
+
     @Override
     public void cercaContatto(String input) {
         for(Contatto contatto : rubrica){
             if(
                     contatto.getNome().toLowerCase().contains(input.toLowerCase())||
                     contatto.getCognome().toLowerCase().contains(input.toLowerCase())||
-                    contatto.getNumero().contains(input)
+                    contatto.containsNum(input)
             ){
                 System.out.println(contatto);
             }
