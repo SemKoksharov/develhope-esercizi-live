@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Agenda {
 
-    Map<Date, ArrayList<Evento>> eventiMap;
+    Map<LocalDate, ArrayList<Evento>> eventiMap;
 
-    public Agenda(Map<Date, ArrayList<Evento>> eventiMap) {
+    public Agenda(Map<LocalDate, ArrayList<Evento>> eventiMap) {
         this.eventiMap = eventiMap;
     }
 
@@ -16,9 +14,10 @@ public class Agenda {
     }
 
     public void aggiungiEvento(Evento evento) {
-        if(eventiMap.containsKey(evento.getData())){
+        if (eventiMap.containsKey(evento.getData())) {
             ArrayList<Evento> eventi = eventiMap.get(evento.getData());
             eventi.add(evento);
+            Collections.sort(eventi, Comparator.comparing(Evento::getTime));
             eventiMap.put(evento.getData(), eventi);
         } else {
             ArrayList<Evento> eventi = new ArrayList<>();
@@ -27,13 +26,26 @@ public class Agenda {
         }
     }
 
-    //aggiungere evento
-    //rimuovere un evento
-    //modificare un evento
-    //cercare un evento
-    //mostrare gli eventi in un range di giorni
-    //filtrare gli eventi in base al tipo
+    public void rimuoviEvento(Evento evento) {
+
+        if (eventiMap.containsKey(evento.getData())) {
+            if (eventiMap.get(evento.getData()).remove(evento)){
+                System.out.println("L'evento è stato rimosso.");
+            } else {
+                System.out.println("Esistono altri eventi in questa data, ma non ho trovato quello che volevi rimuovere");
+            }
+
+        } else {
+            System.out.println("L'evento non è stato trovato.");
+        }
+
+        //aggiungere evento
+        //rimuovere un evento
+        //modificare un evento
+        //cercare un evento
+        //mostrare gli eventi in un range di giorni
+        //filtrare gli eventi in base al tipo
 
 
-
+    }
 }

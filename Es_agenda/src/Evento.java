@@ -1,8 +1,11 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Evento {
     private String nome;
-    private Date data;
+    private LocalDate data;
+    private LocalTime time;
 
     private Double latitudine;
     private Double longitudine;
@@ -12,18 +15,20 @@ public class Evento {
     //creare rif. a participant
 
 
-    public Evento(String nome, Date data, double latitudine, double longitudine, String descrizione, TipoDiEvento tipoDiEvento) {
+    public Evento(String nome, LocalDate data, LocalTime time, double latitudine, double longitudine, String descrizione, TipoDiEvento tipoDiEvento) {
         this.nome = nome;
         this.data = data;
+        this.time = time;
         this.latitudine = latitudine;
         this.longitudine = longitudine;
         this.descrizione = descrizione;
         this.tipoDiEvento = tipoDiEvento;
     }
 
-    public Evento(String nome, Date data) {
+    public Evento(String nome, LocalDate data, LocalTime time) {
         this.nome = nome;
         this.data = data;
+        this.time = time;
         this.latitudine = null;
         this.longitudine = null;
         this.descrizione = "";
@@ -34,15 +39,16 @@ public class Evento {
         return nome;
     }
 
+
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -76,5 +82,13 @@ public class Evento {
 
     public void setTipoDiEvento(TipoDiEvento tipoDiEvento) {
         this.tipoDiEvento = tipoDiEvento;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 }
