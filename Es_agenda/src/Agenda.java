@@ -13,30 +13,39 @@ public class Agenda {
         this.eventiMap = new HashMap<>();
     }
 
-    public void aggiungiEvento(Evento evento) {
-        if (eventiMap.containsKey(evento.getData())) {
-            ArrayList<Evento> eventi = eventiMap.get(evento.getData());
-            eventi.add(evento);
+    public void aggiungiEvento (Evento eventoDaAggiungere) {
+        if (eventiMap.containsKey(eventoDaAggiungere.getData())) {
+            ArrayList<Evento> eventi = eventiMap.get(eventoDaAggiungere.getData());
+            eventi.add(eventoDaAggiungere);
             Collections.sort(eventi, Comparator.comparing(Evento::getTime));
-            eventiMap.put(evento.getData(), eventi);
+            eventiMap.put(eventoDaAggiungere.getData(), eventi);
         } else {
             ArrayList<Evento> eventi = new ArrayList<>();
-            eventi.add(evento);
-            eventiMap.put(evento.getData(), eventi);
+            eventi.add(eventoDaAggiungere);
+            eventiMap.put(eventoDaAggiungere.getData(), eventi);
         }
     }
 
-    public void rimuoviEvento(Evento evento) {
+    public void rimuoviEvento (Evento eventoDaRimuovere) {
+        if (eventiMap.containsKey(eventoDaRimuovere.getData())) {
+            ArrayList<Evento> eventiDelGiorno = eventiMap.get(eventoDaRimuovere.getData());
+            Iterator<Evento> eventoIterator = eventiDelGiorno.iterator();
 
-        if (eventiMap.containsKey(evento.getData())) {
-            if (eventiMap.get(evento.getData()).remove(evento)){
-                System.out.println("L'evento è stato rimosso.");
-            } else {
-                System.out.println("Esistono altri eventi in questa data, ma non ho trovato quello che volevi rimuovere");
+            boolean eventoTrovato = false;
+            while (eventoIterator.hasNext()) {
+                if (eventoIterator.next().getId() == eventoDaRimuovere.getId()) {
+                    eventoTrovato = true;
+                    eventoIterator.remove();
+                    System.out.println("L'evento è stato rimosso.");
+                    break;
+                }
             }
 
+            if (!eventoTrovato) {
+                System.out.println("Esistono altri eventi in questa data, ma non ho trovato quello che volevi rimuovere.");
+            }
         } else {
-            System.out.println("L'evento non è stato trovato.");
+            System.out.println("Non ci sono eventi nella data specificata.");
         }
 
         //aggiungere evento
@@ -46,6 +55,10 @@ public class Agenda {
         //mostrare gli eventi in un range di giorni
         //filtrare gli eventi in base al tipo
 
+
+    }
+
+    public void modificaEvento (Evento evento) {
 
     }
 }

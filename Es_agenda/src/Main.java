@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +17,5 @@ public class Main {
         agenda.aggiungiEvento(evento5);
         agenda.aggiungiEvento(evento6);
         System.out.println();
-
-
     }
 }

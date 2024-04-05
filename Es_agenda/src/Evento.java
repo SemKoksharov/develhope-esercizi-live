@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class Evento {
+    private int id;
     private String nome;
     private LocalDate data;
     private LocalTime time;
@@ -12,10 +12,13 @@ public class Evento {
     private String descrizione;
     private TipoDiEvento tipoDiEvento;
 
+    static private int contatoreId = 0;
+
     //creare rif. a participant
 
 
-    public Evento(String nome, LocalDate data, LocalTime time, double latitudine, double longitudine, String descrizione, TipoDiEvento tipoDiEvento) {
+    public Evento (String nome, LocalDate data, LocalTime time, double latitudine, double longitudine, String descrizione, TipoDiEvento tipoDiEvento) {
+        this.id = ++contatoreId;
         this.nome = nome;
         this.data = data;
         this.time = time;
@@ -39,6 +42,9 @@ public class Evento {
         return nome;
     }
 
+    public int getId() {
+        return this.id;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
