@@ -2,6 +2,7 @@ package com.develhope.AgenziaViaggi.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +24,12 @@ public class UserEntity {
     private String email;
 
     @Column(nullable = false)
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
-//    private List<BookingEntity> bookings;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<BookingEntity> bookings;
 
-    public UserEntity(Long id, String firstName, String lastname, String email, Date dateOfBirth) {
+    public UserEntity(Long id, String firstName, String lastname, String email, LocalDate dateOfBirth) {
         this.id = id;
         this.firstName = firstName;
         this.lastname = lastname;
@@ -68,11 +69,11 @@ public class UserEntity {
         this.email = email;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

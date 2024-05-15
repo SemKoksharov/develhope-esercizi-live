@@ -18,8 +18,8 @@ public class PlaceEntity {
     @Column(nullable = false)
     private String country;
 
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bookings")
-//    private List<BookingEntity> bookings;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "places")
+    private List<BookingEntity> bookings;
 
     public PlaceEntity(Long id, String name, String country) {
         this.id = id;

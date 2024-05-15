@@ -13,8 +13,11 @@ public class BookingEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(joinColumns = @JoinColumn(name = "bookings_id"),
+            inverseJoinColumns = @JoinColumn(name = "students_id"))
     private List<PlaceEntity> places;
 }
