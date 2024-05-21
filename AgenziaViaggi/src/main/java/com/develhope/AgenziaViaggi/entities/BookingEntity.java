@@ -18,6 +18,6 @@ public class BookingEntity {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(joinColumns = @JoinColumn(name = "bookings_id"),
-            inverseJoinColumns = @JoinColumn(name = "students_id"))
+            inverseJoinColumns = @JoinColumn(name = "places_id"))
     private List<PlaceEntity> places;
 }
