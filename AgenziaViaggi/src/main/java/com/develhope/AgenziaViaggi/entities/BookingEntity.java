@@ -20,4 +20,10 @@ public class BookingEntity {
     @JoinTable(joinColumns = @JoinColumn(name = "bookings_id"),
             inverseJoinColumns = @JoinColumn(name = "places_id"))
     private List<PlaceEntity> places;
+
+    public BookingEntity(){}
+    public BookingEntity(UserEntity user, List<PlaceEntity> places) {
+        this.user = user;
+        this.places = places;
+    }
 }

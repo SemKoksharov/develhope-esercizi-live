@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -15,19 +20,28 @@ public class UserEntity {
     private Long id;
 
     @Column(nullable = false)
+    @NotNull()
+    @NotBlank()
     private String firstName;
 
     @Column(nullable = false)
+    @NotNull()
+    @NotBlank()
     private String lastname;
 
     @Column(unique = true, nullable = false)
+    @NotNull()
+    @NotBlank()
     private String email;
 
     @Column(nullable = false)
+    @NotNull()
     private LocalDate dateOfBirth;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<BookingEntity> bookings;
+
+    public UserEntity(){}
 
     public UserEntity(Long id, String firstName, String lastname, String email, LocalDate dateOfBirth) {
         this.id = id;

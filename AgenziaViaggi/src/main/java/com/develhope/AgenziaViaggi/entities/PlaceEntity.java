@@ -1,6 +1,8 @@
 package com.develhope.AgenziaViaggi.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -13,11 +15,16 @@ public class PlaceEntity {
     private Long id;
 
     @Column(nullable = false)
+    @NotNull
+    @NotBlank
     private String name;
 
     @Column(nullable = false)
+    @NotNull
+    @NotBlank
     private String country;
 
+    public PlaceEntity(){}
 
     public PlaceEntity(Long id, String name, String country) {
         this.id = id;
