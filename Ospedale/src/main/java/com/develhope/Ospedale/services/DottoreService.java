@@ -4,6 +4,7 @@ import com.develhope.Ospedale.converter.DottoreConverter;
 import com.develhope.Ospedale.dtos.DottoreDto;
 import com.develhope.Ospedale.entities.Dottore;
 import com.develhope.Ospedale.repositories.DottoreRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-
 public class DottoreService {
     @Autowired
     private DottoreRepo dottoreRepo;
@@ -32,19 +32,20 @@ public class DottoreService {
     }
 
     public List<DottoreDto> getAllDottore(){
-        List<Dottore> dottoreList =dottoreRepo.findAllByDeleted(false);
+        List<Dottore> dottoreList =dottoreRepo.jdqlDottoreByDeleted(false);
         List<DottoreDto> dottoreDtoList = new ArrayList<>();
         for ( Dottore dottore : dottoreList){
+
             dottoreDtoList.add(DottoreConverter.entityToDto(dottore));
         }
         return dottoreDtoList;
     }
     public DottoreDto findById(Long id) {
-        Dottore dottore = dottoreRepo.findById(id).orElse(null);
-        if (dottore != null && !dottore.isDeleted()) {
+        Dottore dottore = dottoreRepo.findByIdAndDeleted(id, false).orElse(null);
+        if (dottore != null) {
             return DottoreConverter.entityToDto(dottore);
         }
-        return null;
+      return null;
     }
 
     public DottoreDto update(DottoreDto dottoreDto) {
@@ -62,15 +63,15 @@ public class DottoreService {
         }
         return null;
     }
-
+    @Transactional
     public boolean delete(Long id) {
-        Dottore dottore = dottoreRepo.findById(id).orElse(null);
-
-        if (dottore != null && !dottore.isDeleted()) {
-            dottore.setDeleted(true);
-            dottoreRepo.save(dottore);
-            return true;
-        }return false;
+        return dottoreRepo.delete(id) == 1;
+//        Dottore dottore = dottoreRepo.findById(id).orElse(null);
+//        if (dottore != null && !dottore.isDeleted()) {
+//            dottore.setDeleted(true);
+//            dottoreRepo.save(dottore);
+//            return true;
+//        }return false;
     }
 
 }
