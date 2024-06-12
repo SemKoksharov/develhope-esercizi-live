@@ -19,14 +19,14 @@ public class Dottore {
     private String surname;
     @Column(name = "specilization",nullable = false)
     private String specialization;
-    @Column(name = "birth_date",nullable = false)
+    @Column(name = "birth_date",nullable = true)
     private Date birthDate;
     @Column(name = "fiscal_code",nullable = false,unique = true)
     private String fiscalCode;
 
     @Column(name = "last_update",nullable = false)
     private Date lastUpdate;
-    @Column(name = "insert_date",nullable = false)
+    @Column(name = "insert_date",nullable = true)
     private Date insertDate;
     @Column(name = "deleted",nullable = false)
     private Boolean deleted;
@@ -101,5 +101,12 @@ public class Dottore {
 
     public void setFiscalCode(String fiscalCode) {
         this.fiscalCode = fiscalCode;
+    }
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
