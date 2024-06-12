@@ -1,0 +1,5 @@
+
+AgenziaViaggi/src/main/java/com/develhope/AgenziaViaggi/entities/UserEntity.java
+AgenziaViaggi/src/main/java/com/develhope/AgenziaViaggi/mappers/BookingMapper.java
+AgenziaViaggi/src/main/java/com/develhope/AgenziaViaggi/mappers/PlaceMapper.java
+AgenziaViaggi/src/main/java/com/develhope/AgenziaViaggi/mappers/UserMapper.java
