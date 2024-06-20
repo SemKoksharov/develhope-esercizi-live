@@ -12,13 +12,6 @@ Benvenuti agli esercizi di live coding di Develhope!
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/SemKoksharov/develhope-esercizi-live.svg)](https://github.com/SemKoksharov/develhope-esercizi-live/commits/master)
 
-## Statistiche del Repository
-
-- Numero totale di esercizi: 10
-- Ultimo aggiornamento: 27 Maggio 2024
-- Numero di collaboratori: 5
-- Linguaggi principali: Python, JavaScript, Java
-
 ## Link al Repository
 
 Trovi il repository degli esercizi su GitHub: [DEVELHOPE ESERCIZI LIVE](https://github.com/SemKoksharov/develhope-esercizi-live)
